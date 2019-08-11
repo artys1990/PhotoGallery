@@ -5,7 +5,7 @@ class MyCarousel extends Component {
   constructor(props) {
     super(props);
     this.items = this.props.images;
-    this.state = { activeIndex: 0 };
+    this.state = { activeIndex: this.props.startIndex };
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goToIndex = this.goToIndex.bind(this);

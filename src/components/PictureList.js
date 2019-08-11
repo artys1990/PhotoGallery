@@ -14,12 +14,13 @@ export default class PictureList extends Component {
         imgForDel:{
             galleryId:'',
             picIndex:''
-        }
+        },
+        startIndex:null
     }
 
     openCarouselHandler= () => { //atver modal
         this.setState({
-            showCarousel: !this.state.showCarousel
+            showCarousel: !this.state.showCarousel,
         })
     }
 
@@ -49,7 +50,7 @@ export default class PictureList extends Component {
 
     render() {
         const gallery = this.context.galleries.find( gallery => gallery.id ===  this.props.location.state.id);
-        const carousel = <MyCarousel images={gallery.pictures}/>;
+        const carousel = <MyCarousel images={gallery.pictures} startIndex={this.state.startIndex}/>;
         return (
             <div style={{textAlign:"center"}}>
                 <h1>{gallery.title}</h1>
@@ -60,7 +61,7 @@ export default class PictureList extends Component {
                             <div className="col-md-4" key={index}>
                                 <div>
                                     <img src={deleteIcon} className="deleteIcon" alt="delete" onClick={() => {this.askPictureDeleteHandler(); this.setState({imgForDel:{galleryId:gallery.id, picIndex: index}})}} />
-                                    <MyCard url={picture} isPicture click={this.openCarouselHandler}/>
+                                    <MyCard url={picture} isPicture click={() => {this.setState({startIndex:index}); this.openCarouselHandler()}}/>
                                 </div>
                             </div>
                         )

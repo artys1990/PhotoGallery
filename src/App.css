@@ -19,13 +19,14 @@ body {
   object-fit: cover;
 }
 
-/* .card-footer h4 {
-  display: inline;
-} */
 .deleteIcon {
   cursor: pointer;
   position: absolute;
   right:40px;
   z-index: 3;
   top: 5px;
+}
+
+.carousel-item > img { 
+  width: 100%; 
 }
